@@ -1,10 +1,7 @@
-import { updateSession } from "@/lib/supabase/middleware"
-import type { NextRequest } from "next/server"
-
-export async function middleware(request: NextRequest) {
-  return await updateSession(request)
+// src/middleware.ts
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+export function middleware(_req: NextRequest) {
+  return NextResponse.next();
 }
-
-export const config = {
-  matcher: ["/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)"],
-}
+export const config = { matcher: ['/((?!_next|favicon.ico|.*\\.(?:png|jpg|jpeg|gif|svg|webp)).*)'] };
